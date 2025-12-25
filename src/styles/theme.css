@@ -1,0 +1,73 @@
+ @layer base {
+  :root {
+    /* Brand */
+    --brand-violet: #7C3AED;
+    --brand-mint: #34D399;
+
+    /* Light Theme */
+    --background: #F8F9FC;
+    --foreground: #1A202C;
+
+    --card: #FFFFFF;
+    --card-foreground: #2D3748;
+
+    --popover: #FFFFFF;
+    --popover-foreground: #2D3748;
+
+    --primary: var(--brand-mint);
+    --primary-foreground: #061D17; /* High contrast */
+
+    --secondary: #EDF2F7;
+    --secondary-foreground: #4A5568;
+
+    --muted: #F7FAFC;
+    --muted-foreground: #718096;
+
+    --accent: var(--brand-violet);
+    --accent-foreground: #FFFFFF;
+
+    --destructive: #E53E3E;
+    --destructive-foreground: #FFFFFF;
+
+    --border: #E2E8F0;
+    --input: #E2E8F0;
+    --ring: #9F7AEA;
+
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    /* Dark Theme */
+    --background: #070A12;
+    --foreground: #EAF0FF;
+
+    --card: #0E1630;
+    --card-foreground: #EAF0FF;
+
+    --popover: #0E1630;
+    --popover-foreground: #EAF0FF;
+
+    --primary: var(--brand-mint);
+    /* --primary-foreground: #fff; */
+    --primary-foreground: #061D17; /* Dark text on bright mint */
+
+    --secondary: #111C3D;
+    --secondary-foreground: #EAF0FF;
+
+    --muted: #111C3D;
+    --muted-foreground: #A9B4D0;
+
+    --accent: #9D5CFF;
+    --accent-foreground: #FFFFFF;
+
+    --destructive: #F87171;
+    --destructive-foreground: #160406;
+
+    --border: #233055;
+    --input: #233055;
+    --ring: #9D5CFF;
+  }
+} 
+
+
+ 
