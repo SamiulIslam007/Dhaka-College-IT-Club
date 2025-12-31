@@ -1,73 +1,195 @@
- @layer base {
-  :root {
-    /* Brand */
-    --brand-violet: #7C3AED;
-    --brand-mint: #34D399;
+/* styles/theme.css */
 
-    /* Light Theme */
-    --background: #F8F9FC;
-    --foreground: #1A202C;
+:root {
+  /* ============================================
+     BRAND COLORS (Core Identity)
+     ============================================ */
+  --brand-violet: #7C3AED;
+  --brand-violet-light: #9D5CFF;
+  --brand-mint: #34D399;
+  --brand-mint-dark: #10B981;
 
-    --card: #FFFFFF;
-    --card-foreground: #2D3748;
+  /* ============================================
+     LIGHT THEME - Clean, Modern & High Contrast
+     ============================================ */
+  
+  /* Backgrounds */
+  --background: #F8F9FC;
+  --foreground: #1A202C;
+  
+  /* Cards */
+  --card: #f7f7f7; /* Light gray background for cards */
+  --card-foreground: #2D3748;
+  
+  /* Popovers */
+  --popover: #FFFFFF;
+  --popover-foreground: #2D3748;
+  
+  /* Borders & Inputs */
+  --border: #E2E8F0;
+  --input: #E2E8F0;
+  
+  /* Primary (Mint) */
+  --primary: #1d7351; /* Darker mint for light theme */
+  --primary-foreground: #FFFFFF;
+  
+  /* Secondary */
+  --secondary: #EDF2F7;
+  --secondary-foreground: #4A5568;
+  
+  /* Muted */
+  --muted: #F7FAFC;
+  --muted-foreground: #718096;
+  
+  /* Accent (Violet) */
+  --accent: #18198b; /* Darker violet for light theme */
+  --accent-foreground: #FFFFFF;
+  
+  /* Destructive */
+  --destructive: #E53E3E;
+  --destructive-foreground: #FFFFFF;
+  
+  /* Focus Ring */
+  --ring: #9F7AEA;
+  
+  /* Border Radius */
+  --radius: 0.75rem;
+  
+  /* ============================================
+     CUSTOM BUTTON COLORS (Light Theme)
+     ============================================ */
+  --button-primary: #235c64;
+  --button-primary-hover: #1d4d54;
+  
+  /* ============================================
+     GRADIENTS (Light Theme)
+     ============================================ */
+  --gradient-text-from: #18198b;
+  --gradient-text-via: #1a4149;
+  --gradient-text-to: #302872;
+  
+  --gradient-hero-from: #18198b;
+  --gradient-hero-via: #1e4b86;
+  --gradient-hero-to: #1d7351;
+}
 
-    --popover: #FFFFFF;
-    --popover-foreground: #2D3748;
+.dark {
+  /* ============================================
+     DARK THEME - Deep Navy for Premium IT Look
+     ============================================ */
+  
+  /* Backgrounds */
+  --background: #070A12;
+  --foreground: #EAF0FF;
+  
+  /* Cards */
+  --card: #0E1630;
+  --card-foreground: #EAF0FF;
+  
+  /* Popovers */
+  --popover: #0E1630;
+  --popover-foreground: #EAF0FF;
+  
+  /* Borders & Inputs */
+  --border: #233055;
+  --input: #233055;
+  
+  /* Primary (Mint) */
+  --primary: var(--brand-mint);
+  --primary-foreground: #FFFFFF;
+  
+  /* Secondary */
+  --secondary: #111C3D;
+  --secondary-foreground: #EAF0FF;
+  
+  /* Muted */
+  --muted: #111C3D;
+  --muted-foreground: #A9B4D0;
+  
+  /* Accent (Violet) */
+  --accent: #9D5CFF; /* Brighter violet for dark mode */
+  --accent-foreground: #FFFFFF;
+  
+  /* Destructive */
+  --destructive: #F87171;
+  --destructive-foreground: #160406;
+  
+  /* Focus Ring */
+  --ring: #9D5CFF;
+  
+  /* ============================================
+     CUSTOM BUTTON COLORS (Dark Theme)
+     ============================================ */
+  --button-primary: #235c64;
+  --button-primary-hover: #2d7078;
+  
+  /* ============================================
+     GRADIENTS (Dark Theme)
+     ============================================ */
+  --gradient-text-from: #7C3AED;
+  --gradient-text-via: #9D5CFF;
+  --gradient-text-to: #34D399;
+  
+  --gradient-hero-from: #7C3AED;
+  --gradient-hero-via: #9D5CFF;
+  --gradient-hero-to: #34D399;
+}
 
-    --primary: var(--brand-mint);
-    --primary-foreground: #061D17; /* High contrast */
+/* ============================================
+   UTILITY CLASSES (Both Themes)
+   ============================================ */
 
-    --secondary: #EDF2F7;
-    --secondary-foreground: #4A5568;
+/* Gradient Text */
+.gradient-text {
+  background: linear-gradient(
+    to right,
+    var(--gradient-text-from),
+    var(--gradient-text-via),
+    var(--gradient-text-to)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 
-    --muted: #F7FAFC;
-    --muted-foreground: #718096;
+/* Gradient Hero */
+.gradient-hero {
+  background: linear-gradient(
+    to right,
+    var(--gradient-hero-from),
+    var(--gradient-hero-via),
+    var(--gradient-hero-to)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 
-    --accent: var(--brand-violet);
-    --accent-foreground: #FFFFFF;
+/* Card Gradient Background */
+.card-gradient {
+  background: linear-gradient(
+    to bottom right,
+    var(--card),
+    var(--secondary)
+  );
+}
 
-    --destructive: #E53E3E;
-    --destructive-foreground: #FFFFFF;
+/* Glow Effects */
+.glow-violet {
+  box-shadow: 0 0 30px rgba(124, 58, 237, 0.3);
+}
 
-    --border: #E2E8F0;
-    --input: #E2E8F0;
-    --ring: #9F7AEA;
+.glow-mint {
+  box-shadow: 0 0 30px rgba(52, 211, 153, 0.3);
+}
 
-    --radius: 0.75rem;
-  }
+/* Hover Glow */
+.hover-glow-violet:hover {
+  box-shadow: 0 0 30px rgba(124, 58, 237, 0.5);
+  border-color: var(--brand-violet);
+}
 
-  .dark {
-    /* Dark Theme */
-    --background: #070A12;
-    --foreground: #EAF0FF;
-
-    --card: #0E1630;
-    --card-foreground: #EAF0FF;
-
-    --popover: #0E1630;
-    --popover-foreground: #EAF0FF;
-
-    --primary: var(--brand-mint);
-    /* --primary-foreground: #fff; */
-    --primary-foreground: #061D17; /* Dark text on bright mint */
-
-    --secondary: #111C3D;
-    --secondary-foreground: #EAF0FF;
-
-    --muted: #111C3D;
-    --muted-foreground: #A9B4D0;
-
-    --accent: #9D5CFF;
-    --accent-foreground: #FFFFFF;
-
-    --destructive: #F87171;
-    --destructive-foreground: #160406;
-
-    --border: #233055;
-    --input: #233055;
-    --ring: #9D5CFF;
-  }
-} 
-
-
- 
+.hover-glow-mint:hover {
+  box-shadow: 0 0 30px rgba(52, 211, 153, 0.5);
+  border-color: var(--brand-mint);
+}
