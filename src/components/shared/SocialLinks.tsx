@@ -13,7 +13,6 @@ import {
 } from "lucide-react";
 import { themeConfig } from "@/config/theme.config";
 import { cn } from "@/lib/utils/cn";
-import { LeadershipSocials } from "@/types";
 
 const socialConfig: Record<string, { icon: LucideIcon; color: string }> = {
   facebook: { icon: Facebook, color: themeConfig.colors.social.facebook },
@@ -26,7 +25,7 @@ const socialConfig: Record<string, { icon: LucideIcon; color: string }> = {
 };
 
 interface SocialLinksProps {
-  links?: LeadershipSocials;
+  links: Record<string, string | undefined>;
   className?: string;
   iconSize?: number;
 }
