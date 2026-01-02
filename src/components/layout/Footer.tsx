@@ -2,27 +2,29 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Send } from "lucide-react";
+import { Send, ArrowRight } from "lucide-react";
 import { navigation } from "@/lib/config/navigation";
 import { siteConfig } from "@/lib/config/site.config";
+import { departments } from "@/lib/data/departments";
 import { SocialLinks } from "@/components/shared/SocialLinks";
 import { Container } from "./Container";
 import { Button } from "@/components/shared/Button";
-import { LeadershipSocials } from "@/types";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
 
+  const footerDepartments = departments.slice(0, 5);
+
   return (
     <footer className="relative bg-card border-t border-border overflow-hidden">
-      <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-primary via-accent to-primary opacity-70"></div>
+      <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-primary/50 to-transparent"></div>
 
       <Container>
-        <div className="py-16 lg:py-20">
+        <div className="pt-16 pb-8 lg:pt-20 lg:pb-10">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
             <div className="space-y-6">
-              <Link href="/" className="flex items-center gap-3 group">
-                <div className="relative w-14 h-14 transition-transform duration-300 group-hover:scale-110">
+              <Link href="/" className="flex items-center gap-3 group w-fit">
+                <div className="relative w-12 h-12 transition-transform duration-300 group-hover:scale-110">
                   <Image
                     src="/logo.png"
                     alt="DCITC Logo"
@@ -43,7 +45,7 @@ export function Footer() {
               </Link>
               <p className="text-muted-foreground text-sm leading-relaxed max-w-xs">
                 {siteConfig.description ||
-                  "Empowering the next generation of tech leaders at Dhaka College."}
+                  "Empowering the next generation of tech leaders at Dhaka College through innovation and mentorship."}
               </p>
             </div>
 
@@ -51,13 +53,14 @@ export function Footer() {
               <h3 className="text-foreground font-bold mb-6 text-sm uppercase tracking-wider">
                 Quick Navigation
               </h3>
-              <ul className="space-y-4">
+              <ul className="space-y-3">
                 {navigation.footer.quickLinks.map((link) => (
                   <li key={link.name}>
                     <Link
                       href={link.href}
-                      className="text-muted-foreground hover:text-primary transition-colors duration-200 text-sm"
+                      className="text-muted-foreground hover:text-primary transition-colors duration-200 text-sm flex items-center group"
                     >
+                      <ArrowRight className="w-3 h-3 mr-2 opacity-0 -ml-5 group-hover:opacity-100 group-hover:ml-0 transition-all duration-300" />
                       {link.name}
                     </Link>
                   </li>
@@ -69,24 +72,31 @@ export function Footer() {
               <h3 className="text-foreground font-bold mb-6 text-sm uppercase tracking-wider">
                 Departments
               </h3>
-              <ul className="space-y-4"></ul>
+              <ul className="space-y-3">
+                {footerDepartments.map((dept) => (
+                  <li key={dept.id}>
+                    <Link
+                      href={`/departments/${dept.slug}`}
+                      className="text-muted-foreground hover:text-primary transition-colors duration-200 text-sm block"
+                    >
+                      {dept.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             </div>
 
-            {/* Newsletter & Socials */}
             <div className="space-y-8">
               <div>
                 <h3 className="text-foreground font-bold mb-6 text-sm uppercase tracking-wider">
                   Stay Connected
                 </h3>
-                <SocialLinks
-                  links={siteConfig.links as LeadershipSocials}
-                  className="mb-6"
-                />
+                <SocialLinks links={siteConfig.links} className="mb-6 gap-4" />
               </div>
 
               <div className="space-y-4">
                 <p className="text-muted-foreground text-sm font-medium">
-                  Join our newsletter for updates.
+                  Subscribe to our newsletter
                 </p>
                 <form
                   onSubmit={(e) => e.preventDefault()}
@@ -94,11 +104,15 @@ export function Footer() {
                 >
                   <input
                     type="email"
-                    placeholder="Enter email"
-                    className="flex-1 px-4 py-2 rounded-lg bg-secondary/50 border border-border text-sm focus:outline-none focus:border-primary transition-all"
+                    placeholder="Enter email address"
+                    className="flex-1 px-4 py-2 rounded-lg bg-secondary/30 border border-border text-sm focus:outline-none focus:border-primary/50 focus:bg-secondary/50 transition-all placeholder:text-muted-foreground/50"
                     required
                   />
-                  <Button type="submit" size="sm" className="px-3">
+                  <Button
+                    type="submit"
+                    size="sm"
+                    className="px-3 shrink-0 cursor-pointer"
+                  >
                     <Send className="w-4 h-4" />
                   </Button>
                 </form>
@@ -106,30 +120,39 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Bottom Bar */}
           <div className="pt-8 border-t border-border/50">
-            <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-              <p className="text-muted-foreground text-xs">
-                © {currentYear} {siteConfig.name}. Developed with ❤️ by{" "}
-                <Link
-                  href="/developer"
-                  className="font-medium text-primary hover:underline transition-all"
-                >
-                  Samiul Islam
-                </Link>
-                & DCITC Dev Team.
-              </p>
+            <div className="pt-8 border-t border-border/50">
+              <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
+                <p className="text-muted-foreground text-xs">
+                  © {currentYear}{" "}
+                  <span className="font-semibold text-foreground">
+                    {siteConfig.name}
+                  </span>
+                  . All rights reserved.
+                </p>
 
-              <div className="flex items-center gap-8">
-                {navigation.footer.legal.map((link) => (
+                <div className="flex items-center gap-6">
+                  {navigation.footer.legal.map((link) => (
+                    <Link
+                      key={link.name}
+                      href={link.href}
+                      className="text-muted-foreground hover:text-primary text-xs transition-colors"
+                    >
+                      {link.name}
+                    </Link>
+                  ))}
+                </div>
+
+                <p className="text-muted-foreground text-xs hidden lg:block">
+                  Developed by{" "}
                   <Link
-                    key={link.name}
-                    href={link.href}
-                    className="text-muted-foreground hover:text-primary text-xs transition-colors"
+                    href="/developer"
+                    className="font-semibold text-foreground hover:text-primary transition-colors"
                   >
-                    {link.name}
+                    Md.Samiul Islam
                   </Link>
-                ))}
+                  .
+                </p>
               </div>
             </div>
           </div>

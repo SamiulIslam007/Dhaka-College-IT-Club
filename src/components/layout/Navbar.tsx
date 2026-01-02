@@ -62,7 +62,7 @@ export function Navbar() {
                   key={item.name}
                   href={item.href}
                   className={cn(
-                    "text-sm font-semibold transition-colors duration-200 relative group py-2",
+                    "text-sm font-semibold transition-colors duration-200 relative group py-1",
                     isActive
                       ? "text-primary"
                       : "text-foreground/80 hover:text-primary"
@@ -71,7 +71,7 @@ export function Navbar() {
                   {item.name}
                   <span
                     className={cn(
-                      "absolute -bottom-1 left-0 h-[2px] bg-gradient-to-r from-[#7C3AED] to-[#34D399] transition-all duration-300",
+                      "absolute bottom-0 left-0 h-[2px] bg-gradient-to-r from-[#7C3AED] to-[#34D399] transition-all duration-300",
                       isActive ? "w-full" : "w-0 group-hover:w-full"
                     )}
                   />
@@ -80,11 +80,10 @@ export function Navbar() {
             })}
           </div>
 
-          {/* Right Actions */}
           <div className="flex items-center gap-3 lg:gap-4">
             <ThemeToggle />
             <Link href="/join" className="hidden sm:block">
-              <Button size="sm" className="font-semibold">
+              <Button size="sm" className="font-semibold cursor-pointer">
                 Join DCITC
               </Button>
             </Link>
@@ -92,7 +91,7 @@ export function Navbar() {
             {/* Mobile Toggle Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden w-10 h-10 rounded-lg bg-card border border-border flex items-center justify-center hover:border-primary transition-all duration-200 active:scale-95"
+              className="lg:hidden w-10 h-10 rounded-lg bg-card border border-border flex items-center justify-center hover:border-primary transition-all duration-200 active:scale-95 cursor-pointer"
               aria-label="Toggle menu"
             >
               {mobileMenuOpen ? (
@@ -145,7 +144,7 @@ export function Navbar() {
                   className="mt-4"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  <Button className="w-full py-6 text-lg rounded-xl">
+                  <Button className="w-full py-6 text-lg rounded-xl cursor-pointer">
                     Join DCITC
                   </Button>
                 </Link>

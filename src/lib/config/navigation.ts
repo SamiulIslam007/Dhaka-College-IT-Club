@@ -7,7 +7,6 @@ export const navigation = {
     { name: "Projects", href: "/projects" },
     { name: "Intel", href: "/intel" },
     { name: "Leadership", href: "/leadership" },
-    { name: "Join", href: "/join" },
   ],
   footer: {
     quickLinks: [
