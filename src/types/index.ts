@@ -6,9 +6,13 @@ export type SocialPlatform =
   | "instagram"
   | "twitter";
 
-export interface SocialLink {
-  platform: SocialPlatform;
-  url: string;
+export interface LeadershipSocials {
+  facebook?: string;
+  linkedin?: string;
+  github?: string;
+  email?: string;
+  portfolio?: string;
+  instagram?: string;
 }
 
 export interface ImageMeta {
@@ -32,11 +36,13 @@ export interface Leadership {
   id: string;
   name: string;
   role: string;
-  batch: string;
-  image: string;
+  department: string;
   bio?: string;
-  socials: SocialLink[];
-  priority: number;
+  image: string;
+  tier: "executive" | "chief" | "joint";
+  batch: string;
+  social: LeadershipSocials;
+  priority?: number;
   status?: "current" | "alumni";
 }
 
