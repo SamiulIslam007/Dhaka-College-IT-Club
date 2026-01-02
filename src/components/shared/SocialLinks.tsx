@@ -26,7 +26,7 @@ const socialConfig: Record<string, { icon: LucideIcon; color: string }> = {
 };
 
 interface SocialLinksProps {
-  links: LeadershipSocials;
+  links?: LeadershipSocials;
   className?: string;
   iconSize?: number;
 }
@@ -36,7 +36,9 @@ export function SocialLinks({
   className,
   iconSize = 20,
 }: SocialLinksProps) {
-  const activeLinks = Object.entries(links).filter(([, value]) => !!value);
+  const activeLinks = Object.entries(links || {}).filter(
+    ([, value]) => !!value
+  );
 
   if (activeLinks.length === 0) return null;
 
