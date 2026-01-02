@@ -15,13 +15,11 @@ export function Footer() {
 
   return (
     <footer className="relative bg-card border-t border-border overflow-hidden">
-      {/* Top Gradient Border */}
       <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-primary via-accent to-primary opacity-70"></div>
 
       <Container>
         <div className="py-16 lg:py-20">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
-            {/* Brand Section */}
             <div className="space-y-6">
               <Link href="/" className="flex items-center gap-3 group">
                 <div className="relative w-14 h-14 transition-transform duration-300 group-hover:scale-110">
@@ -73,26 +71,7 @@ export function Footer() {
               <h3 className="text-foreground font-bold mb-6 text-sm uppercase tracking-wider">
                 Departments
               </h3>
-              <ul className="space-y-4">
-                {/* আপনি চাইলে এই ডাটাগুলোও navigation config এ রাখতে পারেন */}
-                {[
-                  "AI & Machine Learning",
-                  "Web & App Dev",
-                  "Competitive Programming",
-                  "Robotics",
-                ].map((dept) => (
-                  <li key={dept}>
-                    <Link
-                      href={`/departments#${dept
-                        .toLowerCase()
-                        .replace(/ /g, "-")}`}
-                      className="text-muted-foreground hover:text-primary transition-colors duration-200 text-sm"
-                    >
-                      {dept}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+              <ul className="space-y-4"></ul>
             </div>
 
             {/* Newsletter & Socials */}
