@@ -91,14 +91,6 @@ export interface Achievement {
   teamMembers?: string[];
 }
 
-export interface Sponsor {
-  id: string;
-  name: string;
-  logo: string;
-  website?: string;
-  tier: "platinum" | "gold" | "silver" | "partner";
-}
-
 export interface User {
   id: string | number;
   name: string;
