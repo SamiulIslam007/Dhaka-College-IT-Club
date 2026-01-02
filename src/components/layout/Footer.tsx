@@ -91,7 +91,7 @@ export function Footer() {
                 <h3 className="text-foreground font-bold mb-6 text-sm uppercase tracking-wider">
                   Stay Connected
                 </h3>
-                <SocialLinks links={siteConfig.links} className="mb-6 gap-4" />
+                <SocialLinks className="mb-6 gap-4" />
               </div>
 
               <div className="space-y-4">

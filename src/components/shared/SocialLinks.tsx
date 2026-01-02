@@ -1,75 +1,63 @@
-"use client";
-
-import React from "react";
-import {
-  Facebook,
-  Linkedin,
-  Github,
-  Instagram,
-  Twitter,
-  Globe,
-  Mail,
-  type LucideIcon,
-} from "lucide-react";
-import { themeConfig } from "@/config/theme.config";
+import Link from "next/link";
+import { Facebook, Github, Linkedin, Mail } from "lucide-react";
+import { siteConfig } from "@/lib/config/site.config";
 import { cn } from "@/lib/utils/cn";
 
-const socialConfig: Record<string, { icon: LucideIcon; color: string }> = {
-  facebook: { icon: Facebook, color: themeConfig.colors.social.facebook },
-  linkedin: { icon: Linkedin, color: themeConfig.colors.social.linkedin },
-  github: { icon: Github, color: themeConfig.colors.social.github },
-  instagram: { icon: Instagram, color: themeConfig.colors.social.instagram },
-  twitter: { icon: Twitter, color: themeConfig.colors.social.twitter },
-  portfolio: { icon: Globe, color: "#10B981" },
-  email: { icon: Mail, color: "#EA4335" },
-};
-
 interface SocialLinksProps {
-  links: Record<string, string | undefined>;
   className?: string;
-  iconSize?: number;
 }
 
-export function SocialLinks({
-  links,
-  className,
-  iconSize = 20,
-}: SocialLinksProps) {
-  const activeLinks = Object.entries(links || {}).filter(
-    ([, value]) => !!value
-  );
-
-  if (activeLinks.length === 0) return null;
+export function SocialLinks({ className }: SocialLinksProps) {
+  const socials = [
+    {
+      icon: Facebook,
+      href: siteConfig.links.facebook,
+      label: "Facebook",
+    },
+    {
+      icon: Linkedin,
+      href: siteConfig.links.linkedin,
+      label: "LinkedIn",
+    },
+    {
+      icon: Github,
+      href: siteConfig.links.github,
+      label: "GitHub",
+    },
+    {
+      icon: Mail,
+      href: `mailto:${siteConfig.links.email}`,
+      label: "Email",
+    },
+  ];
 
   return (
-    <div className={cn("flex items-center gap-3", className)}>
-      {activeLinks.map(([platform, url]) => {
-        const config = socialConfig[platform];
-        if (!config) return null;
+    <div className={cn("flex gap-3", className)}>
+      {socials.map((social) => {
+        const Icon = social.icon;
 
-        const Icon = config.icon;
-        const brandColor = config.color;
+        const isViolet =
+          social.label === "Facebook" || social.label === "GitHub";
+
+        const hoverStyles = isViolet
+          ? "hover:border-[#7C3AED] hover:bg-[#7C3AED]/10 hover:text-[#7C3AED] hover:shadow-[0_0_15px_rgba(124,58,237,0.5)]"
+          : "hover:border-[#34D399] hover:bg-[#34D399]/10 hover:text-[#34D399] hover:shadow-[0_0_15px_rgba(52,211,153,0.5)]";
 
         return (
-          <a
-            key={platform}
-            href={platform === "email" ? `mailto:${url}` : url}
-            target={platform === "email" ? "_self" : "_blank"}
+          <Link
+            key={social.label}
+            href={social.href || "#"}
+            target={social.label === "Email" ? "_self" : "_blank"}
             rel="noopener noreferrer"
-            className="group relative flex items-center justify-center p-2 transition-transform duration-300 hover:-translate-y-1"
-            aria-label={`Visit ${platform}`}
+            className={cn(
+              "group w-10 h-10 rounded-lg bg-secondary border border-border flex items-center justify-center transition-all duration-300",
+              "text-muted-foreground",
+              hoverStyles
+            )}
+            aria-label={social.label}
           >
-            <div
-              className="absolute inset-0 scale-0 rounded-full transition-transform duration-300 group-hover:scale-110 opacity-10"
-              style={{ backgroundColor: brandColor }}
-            />
-
-            <Icon
-              size={iconSize}
-              className="z-10 transition-colors duration-300 text-muted-foreground group-hover:text-[var(--hover-color)]"
-              style={{ "--hover-color": brandColor } as React.CSSProperties}
-            />
-          </a>
+            <Icon className="w-5 h-5 transition-colors duration-300" />
+          </Link>
         );
       })}
     </div>

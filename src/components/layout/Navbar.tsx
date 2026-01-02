@@ -88,7 +88,6 @@ export function Navbar() {
               </Button>
             </Link>
 
-            {/* Mobile Toggle Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="lg:hidden w-10 h-10 rounded-lg bg-card border border-border flex items-center justify-center hover:border-primary transition-all duration-200 active:scale-95 cursor-pointer"
@@ -104,7 +103,6 @@ export function Navbar() {
         </div>
       </Container>
 
-      {/* Mobile Menu with Framer Motion */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
