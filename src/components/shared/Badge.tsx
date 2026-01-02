@@ -1,25 +1,35 @@
-type BadgeVariant = "default" | "primary" | "success" | "warning" | "error";
+import { HTMLAttributes, forwardRef } from "react";
+import { cn } from "@/lib/utils/cn";
 
-export const Badge = ({
-  text,
-  variant = "default",
-}: {
-  text: string;
-  variant?: BadgeVariant;
-}) => {
-  const styles = {
-    default: "bg-gray-100 text-gray-800",
-    primary: "bg-blue-100 text-blue-800",
-    success: "bg-green-100 text-green-800",
-    warning: "bg-yellow-100 text-yellow-800",
-    error: "bg-red-100 text-red-800",
-  };
+export interface BadgeProps extends HTMLAttributes<HTMLSpanElement> {
+  variant?: "default" | "primary" | "accent" | "success" | "warning" | "danger";
+}
 
-  return (
-    <span
-      className={`px-2.5 py-0.5 rounded-full text-xs font-medium ${styles[variant]}`}
-    >
-      {text}
-    </span>
-  );
-};
+export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
+  ({ className, variant = "default", children, ...props }, ref) => {
+    const variants = {
+      default: "bg-secondary text-secondary-foreground border-border",
+      primary: "bg-primary text-primary-foreground border-primary",
+      accent: "bg-accent text-accent-foreground border-accent",
+      success: "bg-[#22C55E] text-white border-[#22C55E]",
+      warning: "bg-[#F59E0B] text-white border-[#F59E0B]",
+      danger: "bg-[#EF4444] text-white border-[#EF4444]",
+    };
+
+    return (
+      <span
+        ref={ref}
+        className={cn(
+          "inline-flex items-center px-3 py-1 rounded-full text-xs font-medium border",
+          variants[variant],
+          className
+        )}
+        {...props}
+      >
+        {children}
+      </span>
+    );
+  }
+);
+
+Badge.displayName = "Badge";
