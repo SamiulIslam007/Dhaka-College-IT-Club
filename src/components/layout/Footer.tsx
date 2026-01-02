@@ -47,7 +47,6 @@ export function Footer() {
               </p>
             </div>
 
-            {/* Quick Links */}
             <div>
               <h3 className="text-foreground font-bold mb-6 text-sm uppercase tracking-wider">
                 Quick Navigation
@@ -66,7 +65,6 @@ export function Footer() {
               </ul>
             </div>
 
-            {/* Departments Section - Dynamic from Config */}
             <div>
               <h3 className="text-foreground font-bold mb-6 text-sm uppercase tracking-wider">
                 Departments
@@ -112,8 +110,14 @@ export function Footer() {
           <div className="pt-8 border-t border-border/50">
             <div className="flex flex-col md:flex-row items-center justify-between gap-6">
               <p className="text-muted-foreground text-xs">
-                © {currentYear} {siteConfig.name}. Developed with ❤️ by DCITC
-                Dev Team.
+                © {currentYear} {siteConfig.name}. Developed with ❤️ by{" "}
+                <Link
+                  href="/developer"
+                  className="font-medium text-primary hover:underline transition-all"
+                >
+                  Samiul Islam
+                </Link>
+                & DCITC Dev Team.
               </p>
 
               <div className="flex items-center gap-8">
