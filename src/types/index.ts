@@ -45,7 +45,16 @@ export interface Leadership {
   priority?: number;
   status?: "current" | "alumni";
 }
-
+export interface Article {
+  id: string;
+  slug: string;
+  title: string;
+  excerpt: string;
+  content: string;
+  date: string;
+  author: string;
+  image: string;
+}
 export interface Event {
   id: string;
   slug: string;
