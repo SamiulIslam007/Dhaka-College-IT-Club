@@ -57,15 +57,16 @@ export interface Article {
 }
 export interface Event {
   id: string;
-  slug: string;
   title: string;
+  slug: string;
   description: string;
   date: string;
+  time: string;
   location: string;
+  type: string;
+  attendees: string;
+  status: "upcoming" | "ongoing" | "completed";
   image?: string;
-  registrationLink?: string;
-  isUpcoming: boolean;
-  organizer?: string;
 }
 
 export interface Project {
