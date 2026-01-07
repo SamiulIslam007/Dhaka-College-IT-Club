@@ -36,12 +36,8 @@ export function SocialLinks({ className }: SocialLinksProps) {
       {socials.map((social) => {
         const Icon = social.icon;
 
-        const isViolet =
-          social.label === "Facebook" || social.label === "GitHub";
-
-        const hoverStyles = isViolet
-          ? "hover:border-[#7C3AED] hover:bg-[#7C3AED]/10 hover:text-[#7C3AED] hover:shadow-[0_0_15px_rgba(124,58,237,0.5)]"
-          : "hover:border-[#34D399] hover:bg-[#34D399]/10 hover:text-[#34D399] hover:shadow-[0_0_15px_rgba(52,211,153,0.5)]";
+        const hoverStyles =
+          "hover:border-[#34D399] hover:bg-[#34D399]/10 hover:text-[#34D399] hover:shadow-[0_0_15px_rgba(52,211,153,0.5)]";
 
         return (
           <Link

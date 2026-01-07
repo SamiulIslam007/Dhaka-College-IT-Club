@@ -53,7 +53,10 @@ export interface Article {
   content: string;
   date: string;
   author: string;
-  image: string;
+  authorAvatar: string;
+  category: string;
+  readTime: string;
+  image?: string;
 }
 export interface Event {
   id: string;
@@ -88,8 +91,8 @@ export interface Achievement {
   date: string;
   description: string;
   image?: string;
-  category: "competition" | "recognition" | "hackathon" | "other";
-  teamMembers?: string[];
+  category: string;
+  featured?: boolean;
 }
 
 export interface User {

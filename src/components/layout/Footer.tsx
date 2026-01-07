@@ -146,10 +146,12 @@ export function Footer() {
                 <p className="text-muted-foreground text-xs hidden lg:block">
                   Developed by{" "}
                   <Link
-                    href="/developer"
+                    href="https://samiul.vercel.app"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="font-semibold text-foreground hover:text-primary transition-colors"
                   >
-                    Md.Samiul Islam
+                    Md.Samiul Islam (DC 27)
                   </Link>
                   .
                 </p>
