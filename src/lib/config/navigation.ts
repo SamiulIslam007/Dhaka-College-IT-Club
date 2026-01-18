@@ -15,9 +15,5 @@ export const navigation = {
       { name: "Projects", href: "/projects" },
       { name: "Contact", href: "/contact" },
     ],
-    legal: [
-      { name: "Privacy Policy", href: "/privacy" },
-      { name: "Terms of Service", href: "/terms" },
-    ],
   },
 };

@@ -131,7 +131,7 @@ export function Footer() {
                   . All rights reserved.
                 </p>
 
-                <div className="flex items-center gap-6">
+                {/* <div className="flex items-center gap-6">
                   {navigation.footer.legal.map((link) => (
                     <Link
                       key={link.name}
@@ -141,7 +141,7 @@ export function Footer() {
                       {link.name}
                     </Link>
                   ))}
-                </div>
+                </div> */}
 
                 <p className="text-muted-foreground text-xs hidden lg:block">
                   Developed by{" "}
